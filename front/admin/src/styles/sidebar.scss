@@ -54,7 +54,11 @@
     }
 
     .svg-icon {
-      margin-right: 16px;
+      //margin-right: 16px;
+      width: 16px;
+      height: 16px;
+      margin-right: 12px;
+      vertical-align: -0.25em
     }
 
     .el-menu {
@@ -77,6 +81,7 @@
 
     & .nest-menu .el-submenu>.el-submenu__title,
     & .el-submenu .el-menu-item {
+      font-size: 13px;
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
 
@@ -88,11 +93,13 @@
 
   .hideSidebar {
     .sidebar-container {
-      width: 54px !important;
+      //width: 54px !important;
+      width: 75px !important;
     }
 
     .main-container {
-      margin-left: 54px;
+      //margin-left: 54px;
+      margin-left: 75px;
     }
 
     .submenu-title-noDropdown {
