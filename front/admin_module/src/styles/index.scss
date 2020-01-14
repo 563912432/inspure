@@ -1,0 +1,402 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+.clear-float{
+  clear: both;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+.flex-justify-end {
+  justify-content: flex-end;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+.flex-justify-space-between{
+  justify-content: space-between;
+}
+.box-shadow{
+  box-shadow: 0 1px 2px 1px rgba(224,224,224,0.50);
+}
+.inline-block{
+  display: inline-block;
+}
+.ml-3 {
+  margin-left: 3px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+.ml-12 {
+  margin-left: 12px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.p-30 {
+  padding: 30px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+.p-10 {
+  padding: 10px;
+}
+.p-5{
+  padding: 5px;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pr-30 {
+  padding-right: 30px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+.pl-30 {
+  padding-left: 30px;
+}
+.pt-10{
+  padding-top: 10px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+.f-30 {
+  font-size: 30px;
+}
+
+.f-15 {
+  font-size: 15px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-13 {
+  font-size: 13px;
+}
+
+.ft-weight-bold {
+  font-weight: bold;
+}
+
+.col-333 {
+  color: #333333;
+}
+
+.col-666 {
+  color: #666666;
+}
+
+.c-orange {
+  color: orange;
+}
+a.c-orange:hover {
+  color: orange;
+}
+.bg-white {
+  background-color: #ffffff;
+}
+.w-33{
+  width: 33px;
+}
+.w-65{
+  width: 65px;
+}
+.w-80{
+  width: 80px;
+}
+.w-135 {
+  width: 135px;
+}
+.w-150 {
+  width: 150px;
+}
+.w-190 {
+  width: 190px;
+}
+.w-223 {
+  width: 223px;
+}
+.w-300 {
+  width: 300px;
+}
+.w-570 {
+  width: 570px;
+}
+
+.w-100p {
+  width: 100%;
+}
+
+.h-30{
+  height: 30px;
+}
+.line-height-25 {
+  line-height: 25px;
+}
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 0;
+  //padding: 0 30px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.text-right{
+  text-align: right;
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  //padding-bottom: 10px;
+  height: 30px;
+  line-height: 30px;
+  background-color: transparent;
+  margin-bottom: 12px;
+  font-size: 13px;
+  position: relative;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+
+  .search-more{
+    width: 190px;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #DCE0E6;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #999999;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .search-more-content{
+    position: absolute;
+    top: 33px;
+    left: 0;
+    z-index: 1000;
+    background: #FFFFFF;
+    box-shadow: 0 1px 4px 1px rgba(196,196,196,0.50);
+    border-radius: 3px;
+    width: 660px;
+    padding: 25px 35px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}

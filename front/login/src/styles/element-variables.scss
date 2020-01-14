@@ -1,0 +1,18 @@
+/* 改变主题色变量 */
+//$--color-primary: #93C343;
+
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+//@import "~element-ui/packages/theme-chalk/src/index";
+
+@import "~element-ui/packages/theme-chalk/src/base.scss";
+@import "~element-ui/packages/theme-chalk/src/checkbox.scss";
+@import "~element-ui/packages/theme-chalk/src/radio-group.scss";
+@import "~element-ui/packages/theme-chalk/src/radio.scss";
+@import "~element-ui/packages/theme-chalk/src/form.scss";
+@import "~element-ui/packages/theme-chalk/src/form-item.scss";
+@import "~element-ui/packages/theme-chalk/src/icon.scss";
+@import "~element-ui/packages/theme-chalk/src/tooltip.scss";
+@import "~element-ui/packages/theme-chalk/src/input.scss";
+@import "~element-ui/packages/theme-chalk/src/button.scss";
+@import "~element-ui/packages/theme-chalk/src/message.scss";

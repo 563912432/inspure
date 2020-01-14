@@ -1,0 +1,8 @@
+接口地址： vue.config.js
+默认设置:  setting.js
+权    限： permission.js => router.beforeEach()方法
+样    式： style element-variables.scss， index.scss
+公用方法： utils
+npm run new
+头像   navbar.vue
+

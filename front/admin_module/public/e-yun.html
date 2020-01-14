@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>易云系统-浪潮易云</title>
+</head>
+<body>
+<div>
+  <form action="http://117.50.43.204:8888/yca/ypjAuth/loginChangeDb" method="post" id="form">
+    <input type="hidden" name="jsonstr" value="" id="jsonstr">
+  </form>
+</div>
+<script>
+  window.onload = function () {
+    let param = parent.document.getElementById('param').getAttribute('value')
+    console.log(parent.document.getElementById('param'))
+    document.getElementById('jsonstr').setAttribute('value', param)
+    document.getElementById('form').submit()
+  }
+</script>
+</body>
+</html>
