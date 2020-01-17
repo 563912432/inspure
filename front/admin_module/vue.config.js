@@ -23,13 +23,13 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   // 线上环境
-  publicPath: '',
-  outputDir: '../../public/admin',
-  assetsDir: '../admin/static',
+  // publicPath: '',
+  // outputDir: '../../public/admin',
+  // assetsDir: '../admin/static',
   // 本地环境
-  // publicPath: '/',
-  // outputDir: 'admin',
-  // assetsDir: 'static',
+  publicPath: '/',
+  outputDir: 'admin',
+  assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {

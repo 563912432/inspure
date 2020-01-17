@@ -1,7 +1,6 @@
 <template>
-  <div class="objKu">
+  <div class="objKuSources">
     <div class="filter-container">
-      <Header :title="title" class="fl mr-20" />
       <div class="search-more fl mr-20" @click="searchState = !searchState">
         <span>高级搜索</span>
         <i :class="searchState?'el-icon-arrow-up':'el-icon-arrow-down'" />
@@ -73,19 +72,11 @@
           </div>
         </div>
       </el-collapse-transition>
-    </div>
-    <div class="mb-12">
-      <el-button size="mini" plain icon="el-icon-setting" @click="handleDictionaryItem">
-        字典项设置
-      </el-button>
-      <span class="fr">
-        <el-button v-waves size="mini" type="primary" @click="handleAdd">
-          增加题目
+      <div class="fr">
+        <el-button size="small" type="primary">
+          导出
         </el-button>
-        <el-button v-waves size="mini" plain @click="handleImport">
-          上传题目
-        </el-button>
-      </span>
+      </div>
     </div>
     <div class="box-shadow">
       <el-table
@@ -100,7 +91,7 @@
         <el-table-column type="selection" align="center" />
         <el-table-column label="题目" show-overflow-tooltip width="200">
           <template slot-scope="{row}">
-            <span class="tm-title" v-html="row.title" />
+            <div class="tm-title" v-html="row.title" />
           </template>
         </el-table-column>
         <el-table-column label="课程分类" prop="type_name" width="" align="center" />
@@ -115,25 +106,22 @@
             </span>
           </template>
         </el-table-column>
-        <el-table-column label="难度" prop="difficulty['difficulty']" width="100" align="center">
+        <el-table-column label="难度" prop="difficulty['difficulty']" width="" align="center">
           <template slot-scope="{row}">
             {{ row.difficulty['difficulty'] }}
           </template>
         </el-table-column>
         <el-table-column label="来源" prop="type_name" width="" align="center" />
         <el-table-column label="引用次数" prop="type_name" width="" align="center" />
-        <el-table-column label="创建日期" prop="created_at" width="" align="center" show-overflow-tooltip>
+        <el-table-column show-overflow-tooltip label="创建日期" prop="created_at" width="" align="center">
           <template slot-scope="{row}">
             {{ timeStampToSting(row.created_at) }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="200" align="center">
+        <el-table-column label="操作" width="" align="center">
           <template slot-scope="{row}">
-            <el-button type="text" class="text-add" size="mini" @click="handleEdit(row.id)">
-              编辑
-            </el-button>
-            <el-button type="text" class="text-add" size="mini" @click="handleDel(row.id)">
-              删除
+            <el-button type="text" class="text-add" size="mini" @click="detail(row.id)">
+              查看
             </el-button>
           </template>
         </el-table-column>
@@ -141,54 +129,17 @@
     </div>
     <!--分页-->
     <pagination :total="total" class="text-center" :page.sync="pageQuery.page" :limit.sync="pageQuery.page_size" @pagination="getList" />
-
-    <!--批量上传题目-->
-    <el-dialog
-      v-el-drag-dialog
-      :modal="false"
-      title="批量上传题目"
-      :visible.sync="uploadDialogVisible"
-      :close-on-click-modal="false"
-      center
-      width="450px"
-      :before-close="closeUploadDialog"
-      @dragDialog="handleDrag"
-    >
-      <div ref="div" class="text-center" style="padding: 50px 0">
-        <el-upload
-          ref="upload"
-          :limit="1"
-          class="upload-demo"
-          drag
-          :action="host + 'batchUploadExam'"
-          :headers="headers"
-          :before-upload="beforeUploadDocument"
-          :on-success="handleUploadFileSuccess"
-          :on-error="handleUploadFileError"
-          :show-file-list="true"
-          :auto-upload="true"
-        >
-          <i class="el-icon-upload" />
-          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-          <div slot="tip" class="el-upload__tip">
-            <div class="mb-10">只能上传excel文件，单个文件上传不得超过5M</div>
-            <div>请下载示例文件，按要求格式进行上传 <a :href="host + 'static/importExam.xlsx'">示例文件</a></div>
-          </div>
-        </el-upload>
-      </div>
-    </el-dialog>
   </div>
 </template>
 
 <script>
-import { fetchTiMuTypeList, fetchListLevelSet, fetchListPoint, fetchObjKuList, delKu } from '@/api/objKu'
-import Header from '@/views/common/header-span'
+import { fetchTiMuTypeList, fetchListLevelSet, fetchListPoint, fetchObjKuList } from '@/api/objKu'
 import waves from '@/directive/waves' // waves directive
 import elDragDialog from '@/directive/el-drag-dialog' // base on element-ui
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 export default {
-  name: 'ObjKu',
-  components: { Header, Pagination },
+  name: 'ObjKuSources',
+  components: { Pagination },
   directives: { waves, elDragDialog },
   data() {
     return {
@@ -265,83 +216,10 @@ export default {
         this.listLoading = false
       })
     },
-    handleAdd() {
-      this.$router.push('addTimu')
+    // 查看单个题目详情
+    detail(id) {
     },
-    handleEdit(id) {
-      this.$router.push(`addTimu/${id}`)
-    },
-    handleDel(id) {
-      this.$confirm('此操作将删除该题目, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        delKu({ id: id }).then(res => {
-          this.$message.success('删除题目成功')
-          this.getList()
-        })
-      }).catch(() => {
-      })
-    },
-    // 批量导入
-    handleImport() {
-      this.uploadDialogVisible = true
-    },
-    // 关闭批量上传dialog
-    closeUploadDialog() {
-      this.uploadDialogVisible = false
-    },
-    // 上传之前
-    beforeUploadDocument(file) {
-      const isLt5M = file.size / 1024 / 1024 < 5
-      // 验证单次文件上传大小 不能超过5M
-      if (!isLt5M) {
-        this.$message.error('文件大小不得超过5M')
-        return false
-      }
-      // 验证文件类型
-      let fileType = file.type
-      console.log(fileType)
-      if (fileType === '') {
-        const fileInfo = file.name.split('.')
-        if (fileInfo.length < 2) {
-          this.$message.error('不支持的文件格式，请重新选择')
-          return false
-        }
-        fileType = fileInfo[fileInfo.length - 1]
-        if (this.allDocumentFileExt.indexOf(fileType) === -1) {
-          this.$message.error('不支持的文件格式，请重新选择')
-          return false
-        }
-      } else {
-        if (this.allowUploadFileType.indexOf(fileType) === -1) {
-          this.$message.error('不支持的文件格式，请重新选择')
-          return false
-        }
-      }
-    },
-    handleUploadFileSuccess(res, file) {
-      if (res.status === 1) {
-        this.$message.success('题目批量导入成功')
-        this.closeUploadDialog()
-        this.getList()
-      } else {
-        this.$refs.upload.clearFiles()
-        this.$message.error(res.info)
-      }
-    },
-    handleUploadFileError() {
-      this.$refs.upload.clearFiles()
-      this.$message.error('批量导入失败')
-    },
-    // 字典项设置
-    handleDictionaryItem() {
-      this.$router.push('/teachingPackage/dictionaryItem')
-    },
-    // dialog拖拽
-    handleDrag() {
-      this.$refs.div.blur()
+    exportObjectKu() {
     },
     timeStampToSting(timeStamp) {
       const d = new Date(timeStamp * 1000) // 根据时间戳生成的时间对象
@@ -363,7 +241,7 @@ export default {
 </script>
 
 <style>
-  .objKu .tm-title p{
+  .objKuSources .tm-title p{
     width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -371,12 +249,13 @@ export default {
   }
 </style>
 <style lang="scss" scoped>
-  .objKu {
+  .objKuSources {
+    margin-top: 12px;
     .filter-container{
+      position: relative;
       .search-more{
       }
       .search-more-content{
-        left: 110px;
       }
     }
   }

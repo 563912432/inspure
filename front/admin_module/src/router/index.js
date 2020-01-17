@@ -9,6 +9,7 @@ import Layout from '@/layout'
 /* Router Modules */
 import organRouter from './modules/organ'
 import gameRouter from './modules/game'
+import teachingPackageRouter from './modules/teachingPackage'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -100,17 +101,18 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   organRouter,
+  teachingPackageRouter,
   // 题库管理
   {
     path: '/objKu',
     component: Layout,
-    meta: { title: '题库管理', icon: 'obj-line' },
+    meta: { title: '理论题库', icon: 'obj-line' },
     children: [
       {
         path: 'index',
         component: () => import('@/views/obj-ku/index'),
         name: 'ObjKu',
-        meta: { title: '题库管理', noCache: true }
+        meta: { title: '理论题库', noCache: true }
       },
       {
         path: 'addTimu/:id?',
@@ -118,40 +120,40 @@ export const asyncRoutes = [
         name: 'AddTimu',
         meta: { title: '题库 - 试题录入', noCache: true },
         hidden: true
-      },
-      {
+      }
+      /* {
         path: 'dictionaryItem',
         component: () => import('@/views/obj-ku/dictionary-item'),
         name: 'DictionaryItem',
         meta: { title: '题库 - 库字典设置', noCache: true },
         hidden: true
-      }
+      }*/
     ]
   },
-  // 账套库管理
+  // 实训题库管理
   {
     path: '/accountKu',
     component: Layout,
-    meta: { title: '账套库管理', icon: 'account-ku-line' },
+    meta: { title: '实训题库', icon: 'account-ku-line' },
     children: [
       {
         path: 'index',
         component: () => import('@/views/account-ku-set/index'),
         name: 'AccountKuSet',
-        meta: { title: '账套库管理', noCache: true }
+        meta: { title: '实训题库', noCache: true }
       },
       {
         path: 'addAccount/:id?',
         component: () => import('@/views/account-ku-set/add-account'),
         name: 'AddAccount',
-        meta: { title: '账套库管理-新建账套', noCache: true },
+        meta: { title: '实训题库-新建账套', noCache: true },
         hidden: true
       },
       {
         path: 'addAccountData/:id',
         component: () => import('@/views/account-ku-set/add-account-data'),
         name: 'AddAccountData',
-        meta: { title: '账套库管理-数据添加', noCache: true },
+        meta: { title: '实训题库-数据添加', noCache: true },
         hidden: true
       }
     ]
@@ -194,7 +196,22 @@ export const asyncRoutes = [
       }
     ]
   },
+  // 考试管理
   gameRouter,
+  // 错题管理
+  {
+    path: '/wrong',
+    component: Layout,
+    meta: { title: '错题管理', icon: 'account-ku-line' },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/wrong/index'),
+        name: 'Wrong',
+        meta: { title: '错题管理', noCache: true }
+      }
+    ]
+  },
   // 权限
   {
     path: '/auth',

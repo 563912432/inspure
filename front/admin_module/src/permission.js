@@ -3,11 +3,11 @@ import store from './store'
 // import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-import { getToken } from '@/utils/auth' // get token from cookie
-// import { setToken } from '@/utils/auth' // get token from cookie
+// import { getToken } from '@/utils/auth' // get token from cookie
+import { setToken } from '@/utils/auth' // get token from cookie
 import { getMenu, getRole } from '@/utils/menu'
 import getPageTitle from '@/utils/get-page-title'
-// import Cookie from 'js-cookie'
+import Cookie from 'js-cookie'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
@@ -19,11 +19,11 @@ router.beforeEach(async(to, from, next) => {
   document.title = getPageTitle(to.meta.title)
 
   // 确定用户是否已登录
-  const hasToken = getToken()
+  // const hasToken = getToken()
   // 本地测试 往cookie里面写测试数据
-  // const hasToken = 'aaca7acada2414666f0e66b92004a674'
-  // setToken(hasToken)
-  // Cookie.set('scope', 1)
+  const hasToken = '6d3b48369dabd35db5e18bcadeda9dc0'
+  setToken(hasToken)
+  Cookie.set('scope', 1)
   if (hasToken) {
     // 说明是登录成功,【获取有权限的菜单】
     store.commit('user/SET_TOKEN', hasToken)

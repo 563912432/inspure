@@ -15,36 +15,22 @@ const organRouter = {
       meta: { title: '机构菜单管理', noCache: false }
     },
     {
-      path: 'module',
-      component: () => import('@/views/organ/module'),
-      name: 'Module',
-      meta: { title: '模块自定义', noCache: false }
-    },
-    {
       path: 'account',
       component: () => import('@/views/organ/account'),
       name: 'Account',
       meta: { title: '机构账户管理', noCache: false }
     },
     {
-      path: 'moduleTikuDetail/:id',
-      component: () => import('@/views/organ/module-tiku-detail'),
-      name: 'ModuleTikuDetail',
-      meta: { title: '模块开启信息', noCache: true },
-      hidden: true
-    },
-    {
-      path: 'account-ku-set/:id',
-      component: () => import('@/views/organ/account-ku'),
-      name: 'AccountKu',
-      meta: { title: '账套库信息', noCache: true },
-      hidden: true
-    },
-    {
       path: 'spaceManage',
       component: () => import('@/views/organ/space-manage'),
       name: 'SpaceManage',
       meta: { title: '场地管理', noCache: false }
+    },
+    {
+      path: 'resourcesManage',
+      component: () => import('@/views/organ/resources-manage'),
+      name: 'ResourcesManage',
+      meta: { title: '机构资源管理', noCache: false }
     }
   ]
 }

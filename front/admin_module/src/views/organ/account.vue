@@ -55,11 +55,17 @@
         </el-table-column>
         <el-table-column label="操作" width="220" align="center">
           <template slot-scope="{row}">
-            <el-button type="text" class="text-add" size="mini" @click="detailModuleTiku(row.id)">
+            <!--<el-button type="text" class="text-add" size="mini" @click="detailModuleTiku(row.id)">
               模块与题库
             </el-button>
             <el-button type="text" class="text-add" size="mini" @click="accountKu(row.id)">
               账套库
+            </el-button>-->
+            <el-button type="text" class="text-add" size="mini" @click="openMenu(row.id)">
+              菜单开通
+            </el-button>
+            <el-button type="text" class="text-add" size="mini" @click="openResources(row.id)">
+              资源开通
             </el-button>
             <el-button type="text" class="text-add" size="mini" @click="resetPwd(row.id)">
               重置密码
@@ -323,14 +329,18 @@ export default {
         })
       }
     },
-    // 模块与题库详情
-    detailModuleTiku(id) {
+    // 模块与题库详情【改版 废弃】
+    /* detailModuleTiku(id) {
       this.$router.push('moduleTikuDetail/' + id)
-    },
-    // 账套库详情
-    accountKu(id) {
+    },*/
+    // 账套库详情【改版 废弃】
+    /* accountKu(id) {
       this.$router.push('account-ku-set/' + id)
-    },
+    },*/
+    // 开通菜单
+    openMenu(id) {},
+    // 开通资源
+    openResources(id) {},
     // 重置密码
     resetPwd(id) {
       this.pwdFormData.id = id
