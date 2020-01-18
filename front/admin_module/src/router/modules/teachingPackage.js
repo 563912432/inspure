@@ -20,6 +20,13 @@ const teachingPackageRouter = {
       name: 'DictionaryItem',
       meta: { title: '库字典设置', noCache: true },
       hidden: true
+    },
+    {
+      path: 'createPackage',
+      component: () => import('@/views/teaching-package/create-package'),
+      name: 'CreatePackage',
+      meta: { title: '创建教学包', noCache: true },
+      hidden: true
     }
   ]
 }

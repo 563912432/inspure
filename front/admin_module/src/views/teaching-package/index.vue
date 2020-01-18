@@ -194,7 +194,9 @@ export default {
       this.$router.push('dictionaryItem')
     },
     handleExport() {},
-    handleAdd() {},
+    handleAdd() {
+      this.$router.push('createPackage')
+    },
     edit() {},
     del() {}
   }

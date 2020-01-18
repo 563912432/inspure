@@ -421,3 +421,4 @@ export function getNextMonth(date) {
   var t2 = year2 + '-' + month2 + '-' + day2
   return t2
 }
+

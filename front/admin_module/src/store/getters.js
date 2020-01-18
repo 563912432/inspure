@@ -50,6 +50,7 @@ const getters = {
   defaultKeMu: state => state.account.defaultKeMu,
   tmSmall: state => state.tm.tmSmall,
   exam: state => state.tm.exam,
-  messageInfo: state => state.msg.info
+  messageInfo: state => state.msg.info,
+  editCourseState: state => state.package.editCourseState
 }
 export default getters
