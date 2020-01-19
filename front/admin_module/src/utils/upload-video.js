@@ -23,7 +23,7 @@ export default {
             ['bold', 'italic', 'underline'],
             [{ 'script': 'sub' }, { 'script': 'super' }],
             ['clean'],
-            ['link', 'image', 'code']
+            ['linkCourse.vue', 'image', 'code']
           ]
         }
       },

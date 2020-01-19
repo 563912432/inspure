@@ -21,7 +21,7 @@ router.beforeEach(async(to, from, next) => {
   // 确定用户是否已登录
   // const hasToken = getToken()
   // 本地测试 往cookie里面写测试数据
-  const hasToken = '65abe7a7b68f042049dedce51695cbd0'
+  const hasToken = 'b8af0422dff9855a51583463e1cb26ca'
   setToken(hasToken)
   Cookie.set('scope', 1)
   if (hasToken) {

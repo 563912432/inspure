@@ -53,16 +53,28 @@
         <div v-else class="main-bottom">
           <div class="main-title flex flex-align-center">
             <span class="c-small-tag" />
-            <span class="ml-10" :class="activeName === 'zero'?'col-blue':''">课程资源（27）</span>
+            <span class="ml-10 pointer" :class="activeName === 'zero'?'col-blue':''" @click="activeName = 'zero'">课程资源（27）</span>
           </div>
           <div>
             <el-tabs v-model="activeName" class="mail-tabs" type="card">
-              <el-tab-pane :label="'视频（10）'" name="first" style="height: 30px" />
-              <el-tab-pane :label="'图文课件（20）'" name="second" />
-              <el-tab-pane :label="'链接（20）'" name="third" />
-              <el-tab-pane :label="'学习任务（10）'" name="fourth" />
-              <el-tab-pane :label="'作业测试（5）'" name="fifth" />
-              <el-tab-pane :label="'话题（15）'" name="sixth" class="last-child" />
+              <el-tab-pane :label="'视频（10）'" name="first">
+                <VideoCourse />
+              </el-tab-pane>
+              <el-tab-pane :label="'图文课件（20）'" name="second">
+                <ImageTextCourse />
+              </el-tab-pane>
+              <el-tab-pane :label="'链接（20）'" name="third">
+                <LinkCourse />
+              </el-tab-pane>
+              <el-tab-pane :label="'学习任务（10）'" name="fourth">
+                <StudyTask />
+              </el-tab-pane>
+              <el-tab-pane :label="'作业测试（5）'" name="fifth">
+                <ZuoyeTest />
+              </el-tab-pane>
+              <el-tab-pane :label="'话题（15）'" name="sixth" class="last-child">
+                <Topic />
+              </el-tab-pane>
             </el-tabs>
             <div v-if="activeName === 'zero'">
               <div v-for="(item, index) in allResources" :key="index" class="resources-div" style="padding: 15px">
@@ -123,9 +135,16 @@
 </template>
 
 <script>
-import elDragDialog from '@/directive/el-drag-dialog' // base on element-ui
+import elDragDialog from '@/directive/el-drag-dialog'
+import VideoCourse from './videoCourse'
+import ImageTextCourse from './imageTextCourse'
+import LinkCourse from './linkCourse'
+import StudyTask from './studyTask'
+import ZuoyeTest from './zuoyeTest'
+import Topic from './topic' // base on element-ui
 export default {
   name: 'EditChapter',
+  components: { Topic, ZuoyeTest, StudyTask, LinkCourse, ImageTextCourse, VideoCourse },
   directives: { elDragDialog },
   data() {
     return {
